@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BD Movies - Watch</title>
+    <title>MovieTidy - Watch</title>
     <meta name="description" content="Watch movies and TV shows in HD quality">
     <link rel="preconnect" href="https://api.themoviedb.org">
     <link rel="preconnect" href="https://image.tmdb.org">
@@ -134,7 +134,7 @@
             <button class="back-btn" onclick="window.history.back()" aria-label="Back">
                 <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             </button>
-            <a href="https://www.bdmovs.eu.org" class="logo">BD Movies</a>
+            <a href="https://www.MovieTidy.eu.org" class="logo">MovieTidy</a>
             <span class="header-title" id="headerTitle">Loading...</span>
         </div>
         <div class="header-right">
@@ -196,7 +196,7 @@
     </div>
 
     <footer class="footer">
-        <div class="footer-copy">&copy; 2026 BD Movies. All rights reserved. Data provided by TMDB.</div>
+        <div class="footer-copy">&copy; 2026 MovieTidy. All rights reserved. Data provided by TMDB.</div>
     </footer>
 
     <script>
@@ -320,7 +320,7 @@ function switchServer(server) {
 
             document.getElementById('headerTitle').textContent=d.title||d.name||'Untitled';
             document.getElementById('infoTitle').textContent=d.title||d.name||'Untitled';
-            document.title=`Watch ${d.title||d.name||'Movie'} - BD Movies`;
+            document.title=`Watch ${d.title||d.name||'Movie'} - MovieTidy`;
 
             const date=isTV?d.first_air_date:d.release_date;
             const runtime=isTV?(d.episode_run_time&&d.episode_run_time[0]?`${d.episode_run_time[0]} min/ep`:`${d.number_of_seasons||0} Seasons`):`${d.runtime||0} min`;
@@ -372,7 +372,7 @@ function switchServer(server) {
         }
     }
 
-    function goTo(type,id){window.location.href=`${type==='tv'?'https://www.bdmovs.eu.org':'https://www.bdmovs.eu.org'}?id=${id}&type=${type}`}
+    function goTo(type,id){window.location.href=`${type==='tv'?'https://www.MovieTidy.eu.org':'https://www.MovieTidy.eu.org'}?id=${id}&type=${type}`}
 
     // Keyboard shortcuts
     document.addEventListener('keydown',e=>{
