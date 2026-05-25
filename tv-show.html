@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=info.html">
+    <title>Redirecting...</title>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        window.location.href = 'info.html?id=' + id + '&type=tv';
+    </script>
+<base target="_blank">
+</head>
+<body style="background:#050505;color:#94a3b8;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0">
+    <p>Redirecting to TV Show details...</p>
+</body>
+</html>
