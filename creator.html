@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creator - BD Movies</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg:#0a0a0a;
+            --bg2:#121212;
+            --glass:rgba(255,255,255,0.04);
+            --border:rgba(255,255,255,0.08);
+            --text:#f1f1f1;
+            --muted:#bdbdbd;
+            --accent:#8b5cf6;
+            --accent2:#6d28d9;
+            --radius:18px;
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            background:linear-gradient(to bottom,#080808,#101010);
+            color:var(--text);
+            font-family:'Poppins',sans-serif;
+            overflow-x:hidden;
+        }
+
+        .header{
+            width:100%;
+            padding:24px 5%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .logo{
+            font-size:2.2rem;
+            font-weight:800;
+            text-decoration:none;
+            background:linear-gradient(135deg,#ffffff,var(--accent));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        .creator-section{
+            max-width:1100px;
+            margin:auto;
+            padding:20px 5% 80px;
+        }
+
+        .hero-box{
+            background:linear-gradient(145deg,#131313,#1b1b1b);
+            border:1px solid var(--border);
+            border-radius:28px;
+            padding:50px 40px;
+            position:relative;
+            overflow:hidden;
+            box-shadow:0 0 40px rgba(139,92,246,0.12);
+        }
+
+        .hero-box::before{
+            content:'';
+            position:absolute;
+            width:300px;
+            height:300px;
+            background:rgba(139,92,246,0.18);
+            border-radius:50%;
+            top:-120px;
+            right:-120px;
+            filter:blur(80px);
+        }
+
+        .profile-img{
+            width:150px;
+            height:150px;
+            border-radius:50%;
+            object-fit:cover;
+            border:4px solid var(--accent);
+            box-shadow:0 0 35px rgba(139,92,246,0.45);
+            margin-bottom:25px;
+        }
+
+        .hero-content{
+            position:relative;
+            z-index:2;
+            text-align:center;
+        }
+
+        .hero-content h1{
+            font-size:3rem;
+            font-weight:800;
+            margin-bottom:10px;
+        }
+
+        .hero-content h2{
+            font-size:1.1rem;
+            color:var(--accent);
+            font-weight:500;
+            margin-bottom:20px;
+        }
+
+        .hero-content p{
+            max-width:850px;
+            margin:auto;
+            color:var(--muted);
+            line-height:1.9;
+            font-size:1rem;
+        }
+
+        .social-links{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-wrap:wrap;
+            gap:18px;
+            margin-top:35px;
+        }
+
+        .social-links a{
+            width:58px;
+            height:58px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-decoration:none;
+            color:#fff;
+            font-size:1.4rem;
+            background:var(--glass);
+            border:1px solid var(--border);
+            transition:0.35s ease;
+            backdrop-filter:blur(10px);
+        }
+
+        .social-links a:hover{
+            background:var(--accent);
+            transform:translateY(-6px) scale(1.05);
+            box-shadow:0 12px 30px rgba(139,92,246,0.35);
+        }
+
+        .info-grid{
+            margin-top:45px;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:25px;
+        }
+
+        .info-card{
+            background:var(--bg2);
+            border:1px solid var(--border);
+            border-radius:22px;
+            padding:28px;
+            transition:0.35s ease;
+        }
+
+        .info-card:hover{
+            transform:translateY(-6px);
+            border-color:rgba(139,92,246,0.4);
+            box-shadow:0 12px 40px rgba(139,92,246,0.12);
+        }
+
+        .info-card h3{
+            font-size:1.2rem;
+            color:var(--accent);
+            margin-bottom:15px;
+        }
+
+        .info-card p,
+        .info-card li{
+            color:var(--muted);
+            line-height:1.8;
+            font-size:0.95rem;
+        }
+
+        .info-card ul{
+            padding-left:18px;
+        }
+
+        .stats{
+            margin-top:45px;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+            gap:20px;
+        }
+
+        .stat-box{
+            background:linear-gradient(145deg,#151515,#1c1c1c);
+            border:1px solid var(--border);
+            border-radius:20px;
+            padding:28px;
+            text-align:center;
+        }
+
+        .stat-box h2{
+            font-size:2rem;
+            color:var(--accent);
+            margin-bottom:8px;
+        }
+
+        .stat-box p{
+            color:var(--muted);
+            font-size:0.95rem;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:45px;
+            padding:14px 34px;
+            background:linear-gradient(135deg,var(--accent),var(--accent2));
+            color:#fff;
+            text-decoration:none;
+            border-radius:40px;
+            font-weight:600;
+            transition:0.35s ease;
+        }
+
+        .btn:hover{
+            transform:translateY(-4px);
+            box-shadow:0 15px 35px rgba(139,92,246,0.35);
+        }
+
+        @media(max-width:768px){
+
+            .hero-box{
+                padding:40px 20px;
+            }
+
+            .hero-content h1{
+                font-size:2.1rem;
+            }
+
+            .hero-content p{
+                font-size:0.95rem;
+            }
+
+            .profile-img{
+                width:120px;
+                height:120px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <a href="https://www.bdmovs.eu.org/" class="logo">BD Movies</a>
+    </div>
+
+    <div class="creator-section">
+
+        <div class="hero-box">
+
+            <div class="hero-content">
+
+                <!-- Replace with your real image -->
+                <img 
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLjTzYKF_EhBC_m2iX8JEJpI1J53jCVXeCtgq6PQ60llnFR7gX6-4mUAHIk8lh2TiysLWE8LeRjC-5hbxJ5gDRXdwxcsOKgMrbf6LYickEhitQrMYq-AsDgmCZCaFAHA2PJUXzgO4a1UEC9T7YTJMNUznDluqoz7lWhR4V5zBpuwdxZsOaV4uVWPHdVxQ8/s16000/aaPixVerse_Image_Effect_prompt_Design%20a%20favicon%20.jpg"
+                    alt="ALNUR ARAF"
+                    class="profile-img"
+                >
+
+                <h1>ALNUR ARAF</h1>
+
+                <h2>
+                    Digital Marketing Expert • SEO Specialist • Professional Website Builder
+                </h2>
+
+                <p>
+                    I am a passionate Digital Marketing Expert and Professional Website Builder dedicated to helping brands,
+                    businesses, and creators grow online with modern strategies and premium-quality digital experiences.
+                    I specialize in SEO optimization, social media marketing, website design, branding, content strategy,
+                    UI/UX design, and performance-focused web development.
+                    <br><br>
+                    My goal is to create cinematic, fast, and visually stunning websites while building powerful online
+                    marketing systems that increase visibility, engagement, and conversions. I work with modern technologies,
+                    clean coding practices, and creative marketing ideas to deliver professional digital solutions.
+                </p>
+
+                <!-- Social Links -->
+                <div class="social-links">
+
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/alnuraraf" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <!-- Messenger -->
+                    <a href="https://www.messenger.com/t/759374997256297" target="_blank" title="Messenger">
+                        <i class="fab fa-facebook-messenger"></i>
+                    </a>
+
+                    <!-- Twitter / X -->
+                    <a href="https://x.com/ArafSEO" target="_blank" title="Twitter / X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/alnuraraf" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <!-- Fiverr -->
+                    <a href="https://www.fiverr.com/alnuraraf" target="_blank" title="Fiverr">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Info Cards -->
+        <div class="info-grid">
+
+            <div class="info-card">
+                <h3>🚀 Digital Marketing Services</h3>
+
+                <ul>
+                    <li>Search Engine Optimization (SEO)</li>
+                    <li>Social Media Marketing</li>
+                    <li>Facebook & Instagram Growth</li>
+                    <li>Content Strategy & Branding</li>
+                    <li>YouTube SEO & Optimization</li>
+                    <li>Keyword Research & Analytics</li>
+                    <li>Online Business Growth Solutions</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>💻 Website Development</h3>
+
+                <ul>
+                    <li>Modern Responsive Websites</li>
+                    <li>Landing Page Design</li>
+                    <li>Business & Portfolio Websites</li>
+                    <li>Premium UI/UX Design</li>
+                    <li>Fast & Optimized Performance</li>
+                    <li>HTML, CSS & JavaScript Projects</li>
+                    <li>Professional Custom Web Solutions</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🎯 My Mission</h3>
+
+                <p>
+                    My mission is to help businesses and creators establish a strong digital presence with
+                    premium-quality websites and smart marketing strategies.
+                    I believe in creativity, clean design, performance optimization, and real online growth.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+
+            <div class="stat-box">
+                <h2>SEO</h2>
+                <p>Advanced Search Optimization</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>Web</h2>
+                <p>Modern Website Development</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>Brand</h2>
+                <p>Professional Online Identity</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>Growth</h2>
+                <p>Marketing & Audience Expansion</p>
+            </div>
+
+        </div>
+
+        <!-- Back Button -->
+        <div style="text-align:center;">
+            <a href="https://www.bdmovs.eu.org/" class="btn">← Back to Home</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
